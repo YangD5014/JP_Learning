@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Load JSON in HTML</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="container">
+        <div class="header"> <p>日期:2023-07-11    来源:NHK News </p></div>
+        <div class="news">
+            <h3 class="title"><ruby>給食<rt>きゅうしょく</rt></ruby>がなくなる<ruby>夏休<rt>なつやす</rt></ruby>みの<ruby>前<rt>まえ</rt></ruby>にNGOが<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>を<ruby>送<rt>おく</rt></ruby>る</h3>
+            <div class="content">
+                
+                    <p><ruby>物<rt>もの</rt></ruby>の<ruby>値段<rt>ねだん</rt></ruby>が<ruby>高<rt>たか</rt></ruby>くなって、<ruby>困<rt>こま</rt></ruby>っている<ruby>家庭<rt>かてい</rt></ruby>が<ruby>増<rt>ふ</rt></ruby>えています。NGOの「セーブ・ザ・チルドレン・ジャパン」は、<ruby>生活<rt>せいかつ</rt></ruby>が<ruby>苦<rt>くる</rt></ruby>しい<ruby>家庭<rt>かてい</rt></ruby>の<ruby>子<rt>こ</rt></ruby>どもに、<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>を<ruby>送<rt>おく</rt></ruby>る<ruby>活動<rt>かつどう</rt></ruby>をしています。</p>
+                
+                    <p>NGOは<ruby>6日<rt>むいか</rt></ruby>、<ruby>給食<rt>きゅうしょく</rt></ruby>がなくなる<ruby>夏休<rt>なつやす</rt></ruby>みの<ruby>前<rt>まえ</rt></ruby>に、<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>を<ruby>送<rt>おく</rt></ruby>る<ruby>準備<rt>じゅんび</rt></ruby>をしました。ボランティアなどが<ruby>集<rt>あつ</rt></ruby>まって、<ruby>協力<rt>きょうりょく</rt></ruby>する<ruby>会社<rt>かいしゃ</rt></ruby>にもらった<ruby>米<rt>こめ</rt></ruby>やレトルト<ruby>食品<rt>しょくひん</rt></ruby>、お<ruby>菓子<rt>かし</rt></ruby>などを<ruby>箱<rt>はこ</rt></ruby>に<ruby>入<rt>い</rt></ruby>れました。<ruby>申<rt>もう</rt></ruby>し<ruby>込<rt>こ</rt></ruby>みがあった5000の<ruby>家庭<rt>かてい</rt></ruby>に<ruby>送<rt>おく</rt></ruby>ります。</p>
+                
+                    <p>NGOが<ruby>親<rt>おや</rt></ruby>たちに<ruby>聞<rt>き</rt></ruby>くと、<ruby>物<rt>もの</rt></ruby>の<ruby>値段<rt>ねだん</rt></ruby>が<ruby>全部<rt>ぜんぶ</rt></ruby><ruby>高<rt>たか</rt></ruby>くなって、<ruby>子<rt>こ</rt></ruby>どもたちの<ruby>昼<rt>ひる</rt></ruby>ごはんを<ruby>用意<rt>ようい</rt></ruby>できるか<ruby>心配<rt>しんぱい</rt></ruby>だという<ruby>意見<rt>いけん</rt></ruby>がたくさんありました。</p>
+                
+                    <p>NGOの<ruby>人<rt>ひと</rt></ruby>は「<ruby>夏休<rt>なつやす</rt></ruby>みは<ruby>給食<rt>きゅうしょく</rt></ruby>がなくなるので、<ruby>十分<rt>じゅうぶん</rt></ruby>に<ruby>食<rt>た</rt></ruby>べることができない<ruby>子<rt>こ</rt></ruby>どもが<ruby>増<rt>ふ</rt></ruby>えます。<ruby>困<rt>こま</rt></ruby>っている<ruby>人<rt>ひと</rt></ruby>たちのことを<ruby>伝<rt>つた</rt></ruby>えて、<ruby>国<rt>くに</rt></ruby>にも<ruby>助<rt>たす</rt></ruby>けてもらいたいです」と<ruby>話<rt>はな</rt></ruby>しています。</p>
+                
+            
+                <div class="info">
+                    <p>扫码获取音频</p>
+                    <img src='./src/QRcode.png' alt="QQQ"/>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="summeray">
+            <p>总结区</p>
+        </div>
+
+
+
+    </div>
+</body>
+<style>
+        @page {
+            size: A4;
+            margin: 1%;
+          }
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            background-color: aqua;
+            size: A4;
+            margin: 0;
+            align-items: center;
+        }
+        .container {
+            width: 26.1cm; /* A4纸的宽度 */
+            height: 37cm; /* A4纸的高度 */
+            border: 2px solid black;
+            background-color:bisque;             
+        }
+        .header{
+            display: block;
+            border-bottom: 2px solid rgb(0, 0, 0); /* 描边效果 */
+        }
+        .header p{
+            margin-left: 3%;
+            font-size: 20px;
+        }
+    
+        .news{
+            display: block;
+        }
+    
+        .title {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            font-size: 32px;
+            margin-top: 14mm;
+            margin-bottom: 14mm;
+        }
+        
+        .content {
+            text-align: left;
+            margin-left: 3%;
+            margin-right: 3%;
+            height: 200mm;
+            font-size: 25px;
+            margin-bottom: 10px;
+            line-height: 40px;
+        }
+        .info{
+            display: block;
+            height: 40mm;
+        }
+    
+        .info p{
+            margin-top: 10%;
+            margin-left: 0%;
+        }
+        .info img{
+            height: 50%;
+    
+        }
+        .content p{
+            display: flex;
+            flex-wrap: wrap;
+            text-align: left;
+            justify-content: left;
+            align-items: flex-end;
+            font-size: 23px;
+        }
+        .summeray{
+            border-top: 2px solid rgb(0, 0, 0); /* 描边效果 */
+            height: 60mm;
+            font-size: 20px;
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+          
+</style>
+
+</html>

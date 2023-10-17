@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>获取服务器部署的音频数据</title>
+  <meta http-equiv="Content-Language" content="ja">
+  <script>
+    function fetchData() {
+      var audioId = document.getElementById('audioIdInput').value;
+      
+      var url = 'http://iibread.xyz/player/player.php?audio_id=' + audioId;
+      let data_local
+      fetch(url, {headers: {'Content-Type': 'application/json;charset=utf-8'}})
+        .then(response => response.json())
+        .then(data => {
+          data_local = data;
+          console.log(data);
+          console.log(data[0].name);
+          for(var i = 0; i < data.length; i++) {
+            var item = data[i];
+            console.log(item.audio_date); 
+            console.log(item.audio_name);
+            console.log(item.audio_id);
+            document.getElementsByClassName('return_info')[0].innerHTML += '音频名称:'+item.audio_name+' 音频id='+item.audio_id+'<br>';
+          }
+          // 在这里处理返回的数据
+          // 您可以根据需要更新页面上的内容或执行其他操作
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('fetchButton').addEventListener('click', fetchData);
+    });
+  </script>
+</head>
+<body>
+  <h1>测试获取服务器数据</h1>
+
+  <input type="text" id="audioIdInput" placeholder="请输入音频ID 输入all则查询全部">
+  <button id="fetchButton">获取数据</button>
+  <h2>音频信息:</h2>
+  <div class="return_info"></div>
+</body>
+</html>

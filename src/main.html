@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Load JSON in HTML</title>
+</head>
+<body >
+    <div class="news">
+        <h1 class='title'>JSON Data:</h1>
+        <div class="Content">Waiting to be filled....</div>
+    </div>
+
+    <script>
+        fetch('./NHK_news.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                console.log(document.getElementsByClassName('title'));
+                document.getElementsByClassName('title')[0].innerHTML = data.Title;
+                console.log(data.Content);
+                var keys = Object.keys(data.Content);
+                var length = keys.length;
+                for (var i=0;i<length;i++){
+                    var key = keys[i];
+                    var value = data.Content[key];
+                    var div = document.createElement('h4');
+                    div.innerHTML = value;
+                    document.getElementsByClassName('Content')[0].appendChild(div);
+                }
+
+            })
+            .catch(error => console.error(error));
+
+        
+    </script>
+    <style>
+
+        body {
+            background-color: aquamarine;
+            width: 210mm;
+            margin: 0;
+            padding: 20mm;
+        }
+        
+        
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .Content {
+            text-align: left;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</body>
+</html>

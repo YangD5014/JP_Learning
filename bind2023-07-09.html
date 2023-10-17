@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Load JSON in HTML</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="container">
+        <div class="header"> <p>日期:2023-07-09    来源:NHK News </p></div>
+        <div class="news">
+            <h3 class="title"><ruby>世界<rt>せかい</rt></ruby>の<ruby>高校生<rt>こうこうせい</rt></ruby>の「<ruby>物理<rt>ぶつり</rt></ruby>オリンピック」が<ruby>始<rt>はじ</rt></ruby>まった<ruby>日本<rt>にっぽん</rt></ruby>で<ruby>初<rt>はじ</rt></ruby>めて</h3>
+            <div class="content">
+                
+                    <p>「<ruby>国際物理<rt>こくさいぶつり</rt></ruby>オリンピック」は、<ruby>世界<rt>せかい</rt></ruby>の<ruby>高校生<rt>こうこうせい</rt></ruby>が<ruby>物理学<rt>ぶつりがく</rt></ruby>の<ruby>問題<rt>もんだい</rt></ruby>に<ruby>挑戦<rt>ちょうせん</rt></ruby>する<ruby>大会<rt>たいかい</rt></ruby>です。<ruby>若<rt>わか</rt></ruby>い<ruby>人<rt>ひと</rt></ruby>に<ruby>物理学<rt>ぶつりがく</rt></ruby>に<ruby>興味<rt>きょうみ</rt></ruby>を<ruby>持<rt>も</rt></ruby>ってもらうため、1967<ruby>年<rt>ねん</rt></ruby>に<ruby>始<rt>はじ</rt></ruby>まりました。</p>
+                
+                    <p><ruby>今年<rt>ことし</rt></ruby>は<ruby>日本<rt>にっぽん</rt></ruby>で<ruby>初<rt>はじ</rt></ruby>めて<ruby>大会<rt>たいかい</rt></ruby>を<ruby>開<rt>ひら</rt></ruby>いています。<ruby>10日<rt>とおか</rt></ruby>の<ruby>開会<rt>かいかい</rt></ruby><ruby>式<rt>しき</rt></ruby>には、80ぐらいの<ruby>国<rt>くに</rt></ruby>と<ruby>地域<rt>ちいき</rt></ruby>から<ruby>集<rt>あつ</rt></ruby>まった<ruby>高校生<rt>こうこうせい</rt></ruby>の<ruby>選手<rt>せんしゅ</rt></ruby>など500<ruby>人<rt>にん</rt></ruby>が<ruby>出席<rt>しゅっせき</rt></ruby>しました。</p>
+                
+                    <p><ruby>式<rt>しき</rt></ruby>では、2008<ruby>年<rt>ねん</rt></ruby>に<ruby>物理学<rt>ぶつりがく</rt></ruby>でノーベル<ruby>賞<rt>しょう</rt></ruby>をもらった<ruby>小林<rt>こばやし</rt></ruby><ruby>誠<rt>まこと</rt></ruby>さんが「<ruby>物理学<rt>ぶつりがく</rt></ruby>の<ruby>勉強<rt>べんきょう</rt></ruby>は<ruby>将来<rt>しょうらい</rt></ruby>の<ruby>大切<rt>たいせつ</rt></ruby>な<ruby>財産<rt>ざいさん</rt></ruby>になります。<ruby>頑張<rt>がんば</rt></ruby>ってください」と<ruby>言<rt>い</rt></ruby>いました。<ruby>選手<rt>せんしゅ</rt></ruby>たちの<ruby>紹介<rt>しょうかい</rt></ruby>では、<ruby>会場<rt>かいじょう</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>がウクライナの<ruby>高校生<rt>こうこうせい</rt></ruby>に<ruby>特<rt>とく</rt></ruby>に<ruby>大<rt>おお</rt></ruby>きな<ruby>拍手<rt>はくしゅ</rt></ruby>をしていました。</p>
+                
+                    <p><ruby>選手<rt>せんしゅ</rt></ruby>たちは<ruby>実験<rt>じっけん</rt></ruby>などの<ruby>難<rt>むずか</rt></ruby>しい<ruby>問題<rt>もんだい</rt></ruby>に<ruby>挑戦<rt>ちょうせん</rt></ruby>します。<ruby>成績<rt>せいせき</rt></ruby>がいい<ruby>選手<rt>せんしゅ</rt></ruby>は<ruby>金<rt>きん</rt></ruby>、<ruby>銀<rt>ぎん</rt></ruby>、<ruby>銅<rt>どう</rt></ruby>のメダルをもらいます。<ruby>大会<rt>たいかい</rt></ruby>は17<ruby>日<rt>にち</rt></ruby>までです。</p>
+                
+            
+                <div class="info">
+                    <p>扫码获取音频</p>
+                    <img src='./src/QRcode.png' alt="QQQ"/>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="summeray">
+            <p>总结区</p>
+        </div>
+
+
+
+    </div>
+</body>
+<style>
+        @page {
+            size: A4;
+            margin: 1%;
+          }
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            background-color: aqua;
+            size: A4;
+            margin: 0;
+            align-items: center;
+        }
+        .container {
+            width: 26.1cm; /* A4纸的宽度 */
+            height: 37cm; /* A4纸的高度 */
+            border: 2px solid black;
+            background-color:bisque;             
+        }
+        .header{
+            display: block;
+            border-bottom: 2px solid rgb(0, 0, 0); /* 描边效果 */
+        }
+        .header p{
+            margin-left: 3%;
+            font-size: 20px;
+        }
+    
+        .news{
+            display: block;
+        }
+    
+        .title {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            font-size: 32px;
+            margin-top: 14mm;
+            margin-bottom: 14mm;
+        }
+        
+        .content {
+            text-align: left;
+            margin-left: 3%;
+            margin-right: 3%;
+            height: 200mm;
+            font-size: 25px;
+            margin-bottom: 10px;
+            line-height: 40px;
+        }
+        .info{
+            display: block;
+            height: 40mm;
+        }
+    
+        .info p{
+            margin-top: 10%;
+            margin-left: 0%;
+        }
+        .info img{
+            height: 50%;
+    
+        }
+        .content p{
+            display: flex;
+            flex-wrap: wrap;
+            text-align: left;
+            justify-content: left;
+            align-items: flex-end;
+            font-size: 23px;
+        }
+        .summeray{
+            border-top: 2px solid rgb(0, 0, 0); /* 描边效果 */
+            height: 60mm;
+            font-size: 20px;
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+          
+</style>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Load JSON in HTML</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="container">
+        <div class="header"> <p>日期:2023-07-12    来源:NHK News </p></div>
+        <div class="news">
+            <h3 class="title"><ruby>東京<rt>とうきょう</rt></ruby><ruby>熱中症<rt>ねっちゅうしょう</rt></ruby>になる<ruby>人<rt>ひと</rt></ruby>が<ruby>増<rt>ふ</rt></ruby>えて<ruby>救急車<rt>きゅうきゅうしゃ</rt></ruby>が<ruby>忙<rt>いそが</rt></ruby>しくなっている</h3>
+            <div class="content">
+                
+                    <p><ruby>日本<rt>にっぽん</rt></ruby>のいろいろな<ruby>場所<rt>ばしょ</rt></ruby>でとても<ruby>暑<rt>あつ</rt></ruby>くなっています。</p>
+                
+                    <p><ruby>東京<rt>とうきょう</rt></ruby>では<ruby>10日<rt>とおか</rt></ruby>、<ruby>熱中症<rt>ねっちゅうしょう</rt></ruby>になった<ruby>人<rt>ひと</rt></ruby>などを<ruby>病院<rt>びょういん</rt></ruby>に<ruby>運<rt>はこ</rt></ruby>ぶため、<ruby>救急車<rt>きゅうきゅうしゃ</rt></ruby>が<ruby>忙<rt>いそが</rt></ruby>しくなりました。<ruby>東京消防庁<rt>とうきょうしょうぼうちょう</rt></ruby>は、<ruby>救急<rt>きゅうきゅう</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby>をする<ruby>人<rt>ひと</rt></ruby>を<ruby>増<rt>ふ</rt></ruby>やしました。しかし、すぐに<ruby>救急車<rt>きゅうきゅうしゃ</rt></ruby>が<ruby>行<rt>い</rt></ruby>くことができない<ruby>心配<rt>しんぱい</rt></ruby>があるため、「<ruby>救急車<rt>きゅうきゅうしゃ</rt></ruby>ひっ<ruby>迫<rt>ぱく</rt></ruby>アラート」を<ruby>初<rt>はじ</rt></ruby>めて<ruby>出<rt>だ</rt></ruby>しました。このアラートは、<ruby>救急車<rt>きゅうきゅうしゃ</rt></ruby>の80％<ruby>以上<rt>いじょう</rt></ruby>が<ruby>活動<rt>かつどう</rt></ruby>しているときなどに<ruby>出<rt>だ</rt></ruby>します。</p>
+                
+                    <p><ruby>東京消防庁<rt>とうきょうしょうぼうちょう</rt></ruby>は、<ruby>必要<rt>ひつよう</rt></ruby>な<ruby>人<rt>ひと</rt></ruby>の<ruby>所<rt>ところ</rt></ruby>に<ruby>早<rt>はや</rt></ruby>く<ruby>行<rt>い</rt></ruby>くことができるように、<ruby>救急車<rt>きゅうきゅうしゃ</rt></ruby>を<ruby>正<rt>ただ</rt></ruby>しく<ruby>利用<rt>りよう</rt></ruby>してほしいと<ruby>言<rt>い</rt></ruby>っています。<ruby>救急車<rt>きゅうきゅうしゃ</rt></ruby>を<ruby>呼<rt>よ</rt></ruby>んだほうがいいかわからない<ruby>場合<rt>ばあい</rt></ruby>は、「#7119」に<ruby>電話<rt>でんわ</rt></ruby>してください。</p>
+                
+                    <p><ruby>九州<rt>きゅうしゅう</rt></ruby>など<ruby>雨<rt>あめ</rt></ruby>の<ruby>被害<rt>ひがい</rt></ruby>があった<ruby>所<rt>ところ</rt></ruby>では、<ruby>家<rt>いえ</rt></ruby>などを<ruby>片<rt>かた</rt></ruby>づけるときに<ruby>熱中症<rt>ねっちゅうしょう</rt></ruby>に<ruby>気<rt>き</rt></ruby>をつける<ruby>必要<rt>ひつよう</rt></ruby>があります。<ruby>水<rt>みず</rt></ruby>を<ruby>飲<rt>の</rt></ruby>んだり<ruby>休<rt>やす</rt></ruby>む<ruby>時間<rt>じかん</rt></ruby>を<ruby>増<rt>ふ</rt></ruby>やしたりして、<ruby>気<rt>き</rt></ruby>をつけてください。</p>
+                
+            
+                <div class="info">
+                    <p>扫码获取音频</p>
+                    <img src='./src/QRcode.png' alt="QQQ"/>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="summeray">
+            <p>总结区</p>
+        </div>
+
+
+
+    </div>
+</body>
+<style>
+        @page {
+            size: A4;
+            margin: 1%;
+          }
+        body {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            background-color: aqua;
+            size: A4;
+            margin: 0;
+            align-items: center;
+        }
+        .container {
+            width: 26.1cm; /* A4纸的宽度 */
+            height: 37cm; /* A4纸的高度 */
+            border: 2px solid black;
+            background-color:bisque;             
+        }
+        .header{
+            display: block;
+            border-bottom: 2px solid rgb(0, 0, 0); /* 描边效果 */
+        }
+        .header p{
+            margin-left: 3%;
+            font-size: 20px;
+        }
+    
+        .news{
+            display: block;
+        }
+    
+        .title {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            font-size: 32px;
+            margin-top: 14mm;
+            margin-bottom: 14mm;
+        }
+        
+        .content {
+            text-align: left;
+            margin-left: 3%;
+            margin-right: 3%;
+            height: 200mm;
+            font-size: 25px;
+            margin-bottom: 10px;
+            line-height: 40px;
+        }
+        .info{
+            display: block;
+            height: 40mm;
+        }
+    
+        .info p{
+            margin-top: 10%;
+            margin-left: 0%;
+        }
+        .info img{
+            height: 50%;
+    
+        }
+        .content p{
+            display: flex;
+            flex-wrap: wrap;
+            text-align: left;
+            justify-content: left;
+            align-items: flex-end;
+            font-size: 23px;
+        }
+        .summeray{
+            border-top: 2px solid rgb(0, 0, 0); /* 描边效果 */
+            height: 60mm;
+            font-size: 20px;
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+          
+</style>
+
+</html>
