@@ -90,7 +90,7 @@ class BingCreeper():
         template = env.get_template('./src/bing_news_template.html')
         # 渲染模板并生成临时 HTML 文件
         rendered_html = template.render(data = self.news)
-        self.render_html_dir = './src/'+self.news.date+'_'+self.news.author+'.html'
+        self.render_html_dir = './src/'+self.news.date+'_'+self.news.author+self.news_title[:10]+'.html'
         with open(self.render_html_dir, 'w') as file:
             file.write(rendered_html)
             
@@ -101,7 +101,7 @@ class BingCreeper():
 
         # 使用 WeasyPrint 打印 HTML
         config = pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')
-        pdf_path = './'+self.news.author+self.news.date+'output.pdf'
+        pdf_path = './'+self.news.author+self.news.date+self.news_title[:10]+'output.pdf'
         options = {
         'no-stop-slow-scripts': None,
         'image-quality': '100',

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
+    <section>
     <div class="container">
         <div class="header"> <p>日期:{{data.date}}    来源:{{data.author}}</p></div>
         <div class="news">
@@ -17,119 +18,127 @@
                     <p>{{ value }}</p>
                 {% endfor %}
             
-                <div class="info">
+                <!-- <div class="info">
                     <p>扫码获取音频</p>
                     <img src="data:image/png;base64,{{ data.ImageBase64 }}" alt="QQQ">
-                </div>
+                </div> -->
             </div>
 
 
         </div>
+    </section>
+    <Section>
+        <div class="container"></div>
+
+
+    </Section>
 
 
 
-
+<!-- 
         <div class="summeray">
             <p>总结区</p>
-        </div>
+        </div> -->
 
 
 
     </div>
 </body>
 <style>
-        @page {
-            size: A4;
-            margin: 1%;
-          }
-        body {
-            display: flex;
-            justify-content: center;
-            height: 100%;
-            background-color: aqua;
-            size: A4;
-            margin: 0;
-            align-items: center;
-        }
-        .container {
-            width: 26.1cm; /* A4纸的宽度 */
-            height: 37cm; /* A4纸的高度 */
-            border: 2px solid black;
-            background-color:bisque;             
-        }
-        .header{
-            display: block;
-            border-bottom: 2px solid rgb(0, 0, 0); /* 描边效果 */
-        }
-        .header p{
-            margin-left: 3%;
-            font-size: 20px;
-        }
-    
-        .news{
-            display: block;
-        }
-        .article_cover {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 400px;
-        }
-        .article_cover img{
-            position: relative;
-            height: 400px;
+    @page {
+        size: A4;
+        margin: 1%;
+      }
+    body {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        background-color: aqua;
+        size: A4;
+        margin: 0;
+        align-items: center;
+    }
+    .container {
+        width: 26.1cm; /* A4纸的宽度 */
+        height: 37cm; /* A4纸的高度 */
+        border: 2px solid black;
+        background-color:rgb(255, 255, 255);             
+    }
+    .header{
+        display: block;
+        border-bottom: 2px solid rgb(0, 0, 0); /* 描边效果 */
+    }
+    .header p{
+        margin-left: 3%;
+        font-size: 20px;
+    }
 
-        }  
+    .news{
+        display: block;
+    }
+    .article_cover {
+        text-align: center;
+        height: 300px;
+    }
     
-        .title {
-            text-align: center;
-            justify-content: center;
-            align-items: flex-end;
-            font-size: 32px;
-            margin-top: 14mm;
-            margin-bottom: 14mm;
-        }
-        
-        .content {
-            text-align: left;
-            margin-left: 3%;
-            margin-right: 3%;
-            height: 200mm;
-            font-size: 25px;
-            margin-bottom: 10px;
-            line-height: 30px;
-        }
-        .info{
-            display: block;
-            height: 40mm;
-        }
+    .article_cover img {
+        top: 50%;
+        left: 50%;
+        max-width: 100%; /* 确保图像不超出容器宽度 */
+        max-height: 100%; /* 确保图像不超出容器高度 */
+    }
+
+    .title {
+        text-align: center;
+        justify-content: center;
+        align-items: flex-end;
+        font-size: 32px;
+        margin-top: 14mm;
+        margin-bottom: 14mm;
+        margin-left: 10mm;
+        margin-right: 10mm;
+    }
     
-        .info p{
-            margin-top: 10%;
-            margin-left: 0%;
-        }
-        .info img{
-            height: 50%;
-    
-        }
-        .content p{
-            letter-spacing: 3px; /* 调整为适当的值 */
-            line-height: 2;
-            display: flex;
-            flex-wrap: wrap;
-            text-align: left;
-            justify-content: left;
-            align-items: flex-end;
-            font-size: 23px;
-        }
-        .summeray{
-            border-top: 2px solid rgb(0, 0, 0); /* 描边效果 */
-            height: 60mm;
-            font-size: 20px;
-            margin-left: 3%;
-            margin-right: 3%;
-        }
-          
+    .content {
+        text-align: left;
+        margin-left: 3%;
+        margin-right: 3%;
+        height: 200mm;
+        font-size: 25px;
+        margin-bottom: 10px;
+        line-height: 30px;
+    }
+    .info{
+        display: block;
+        height: 40mm;
+    }
+
+    .info p{
+        margin-top: 10%;
+        margin-left: 0%;
+    }
+    .info img{
+        height: 50%;
+
+    }
+    .content p{
+        letter-spacing: 3px; /* 调整为适当的值 */
+        line-height: 1.2;
+        display: flex;
+        flex-wrap: wrap;
+        text-align: left;
+        justify-content: left;
+        align-items: flex-end;
+        font-size: 20px;
+    }
+    .summeray{
+        border-top: 2px solid rgb(0, 0, 0); /* 描边效果 */
+        height: 60mm;
+        font-size: 20px;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+      
 </style>
 
 </html>
