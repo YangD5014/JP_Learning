@@ -6,11 +6,14 @@
 </head>
 <body>
     <div class="container">
-        <div class="header"> <p>日期:{{data.Date}}    来源:{{data.author}} </p></div>
+        <div class="header"> <p>日期:{{data.date}}    来源:{{data.author}}</p></div>
         <div class="news">
-            <h3 class="title">{{ data.Title }}</h3>
+            <h3 class="title">{{ data.title }}</h3>
+            <div class='article_cover'>
+                <img src='{{data.cover}}' alt="">
+            </div>
             <div class="content">
-                {% for key, value in data.Content.items() %}
+                {% for value in data.content %}
                     <p>{{ value }}</p>
                 {% endfor %}
             
@@ -19,6 +22,7 @@
                     <img src="data:image/png;base64,{{ data.ImageBase64 }}" alt="QQQ">
                 </div>
             </div>
+
 
         </div>
 
@@ -65,10 +69,20 @@
         .news{
             display: block;
         }
+        .article_cover {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+        }
+        .article_cover img{
+            position: relative;
+            height: 400px;
+
+        }  
     
         .title {
             text-align: center;
-            display: flex;
             justify-content: center;
             align-items: flex-end;
             font-size: 32px;
@@ -99,6 +113,8 @@
     
         }
         .content p{
+            letter-spacing: 3px; /* 调整为适当的值 */
+            line-height: 2;
             display: flex;
             flex-wrap: wrap;
             text-align: left;

@@ -8,7 +8,7 @@ from pykakasi import kakasi
 from selenium import webdriver
 import re
 from weasyprint import HTML
-#import pdfkit
+import pdfkit
 #import qrcode
 from PIL import Image
 import base64
@@ -22,6 +22,8 @@ class BingCreeper():
         """
         self.url = url
         self.get_web_content()
+        self.render_html()
+        self.printPDF()
 
         
         
@@ -39,18 +41,67 @@ class BingCreeper():
         self.content_code = self.soup.find(name='div', attrs={'class': 'consumption-feed-content'}).attrs['data-content-id']
         self.second_page_source = requests.get('https://assets.msn.com/content/view/v2/Detail/ja-jp/'+self.content_code)
         self.article_dict = json.loads(self.second_page_source.text)
-        self.article_abstract = self.article_dict['abstract']
+        # self.article_abstract = self.article_dict['abstract']
         soup = BeautifulSoup(self.article_dict['body'],'html.parser')
         article_content = soup.find_all('p') #列表 里面是是p标签 长度为文章段数 
         self.article_content =[i.text for i in article_content]
-        self.news = News_article(self.news_title,self.article_abstract,self.article_content)
+        self.article_date = self.article_dict['publishedDateTime'].split('T')[0]
+        self.article_cover = self.article_dict['imageResources'][1]['url']
+                
+        self.news = News_article(title=self.news_title,
+                            author=self.article_dict['authors'][0]['name'],
+                            content=self.article_content,
+                            date=self.article_date,
+                            cover=self.article_cover)
+        self.decorate_content()
+
+        
+    def decorate_content(self) -> None:
+        self.kakasi_instance = kakasi()
+        self.decorate_content = []
+        self.decorate_title = []
+        for i in self.news.content:
+            converted_text = self.kakasi_instance.convert(i)
+            after_text=''
+            for i in converted_text:
+                if i['orig'] == i['hira']:
+                    after_text += i['orig']
+                else:
+                    after_text += '<ruby>'+i['orig']+'<rt>'+i['hira']+'</rt></ruby>'
+            after_text += ''
+            self.decorate_content.append(after_text)
+        self.news.content = self.decorate_content
+        
+        tmp=''
+        for i in self.news.title:
+            
+            converted_text = self.kakasi_instance.convert(i)
+            after_text=''
+            for i in converted_text:
+                if i['orig'] == i['hira']:
+                    after_text += i['orig']
+                else:
+                    after_text += '<ruby>'+i['orig']+'<rt>'+i['hira']+'</rt></ruby>'
+            tmp += after_text
+        self.news.title = tmp
+            
+    def render_html(self):
+        env = Environment(loader=FileSystemLoader('.'))
+        template = env.get_template('./src/bing_news_template.html')
+        # 渲染模板并生成临时 HTML 文件
+        rendered_html = template.render(data = self.news)
+        self.render_html_dir = './src/'+self.news.date+'_'+self.news.author+'.html'
+        with open(self.render_html_dir, 'w') as file:
+            file.write(rendered_html)
+            
+    
         
             
     def printPDF(self):
 
         # 使用 WeasyPrint 打印 HTML
         config = pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')
-        pdf_path = self.date+'output.pdf'
+        pdf_path = './'+self.news.author+self.news.date+'output.pdf'
         options = {
         'no-stop-slow-scripts': None,
         'image-quality': '100',
@@ -61,7 +112,7 @@ class BingCreeper():
         'margin-bottom': '0',
         'margin-left': '0',
         'encoding': "UTF-8",}
-        pdfkit.from_file('./bind'+self.date+'.html', pdf_path,configuration=config,options=options) 
+        pdfkit.from_file(self.render_html_dir, pdf_path,configuration=config,options=options) 
         
     def QRcode_img(self):
         # 生成二维码
@@ -96,7 +147,13 @@ class BingCreeper():
 
 
 class News_article():
-    def __init__(self,title:str,abstract:str,content:list) -> None:
+    def __init__(self,title:str,
+                 author:str,
+                 content:list,
+                 date:str,
+                 cover:str) -> None:
         self.title = title
-        self.abstract = abstract
         self.content = content
+        self.author = author
+        self.date = date
+        self.cover = cover
