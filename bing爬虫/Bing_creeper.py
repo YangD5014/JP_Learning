@@ -5,7 +5,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pykakasi import kakasi
+import azure.cognitiveservices.speech as speechsdk
 from selenium import webdriver
+import hashlib
 import re
 from weasyprint import HTML
 import pdfkit
@@ -24,6 +26,7 @@ class BingCreeper():
         self.get_web_content()
         self.render_html()
         self.printPDF()
+        self.generate_sound()
 
         
         
@@ -44,15 +47,23 @@ class BingCreeper():
         # self.article_abstract = self.article_dict['abstract']
         soup = BeautifulSoup(self.article_dict['body'],'html.parser')
         article_content = soup.find_all('p') #列表 里面是是p标签 长度为文章段数 
-        self.article_content =[i.text for i in article_content]
+        self.article_content =[i.text for i in article_content if article_content]
+        self.article_content =[i for i in self.article_content if i !='']
+        
         self.article_date = self.article_dict['publishedDateTime'].split('T')[0]
-        self.article_cover = self.article_dict['imageResources'][1]['url']
+        self.article_cover = self.article_dict['imageResources'][0]['url']
+        
+        self.news_title_translate = BingCreeper.get_traslation(translate_querry=self.news_title)
+        
+        self.article_content_translate = [BingCreeper.get_traslation(translate_querry=i) for i in self.article_content if i !='']
                 
         self.news = News_article(title=self.news_title,
                             author=self.article_dict['authors'][0]['name'],
                             content=self.article_content,
                             date=self.article_date,
-                            cover=self.article_cover)
+                            cover=self.article_cover,
+                            title_translate=self.news_title_translate,
+                            content_translate=self.article_content_translate)
         self.decorate_content()
 
         
@@ -87,7 +98,7 @@ class BingCreeper():
             
     def render_html(self):
         env = Environment(loader=FileSystemLoader('.'))
-        template = env.get_template('./src/bing_news_template.html')
+        template = env.get_template('./src/template/读卖テレビ.html')
         # 渲染模板并生成临时 HTML 文件
         rendered_html = template.render(data = self.news)
         self.render_html_dir = './src/'+self.news.date+'_'+self.news.author+self.news_title[:10]+'.html'
@@ -95,6 +106,28 @@ class BingCreeper():
             file.write(rendered_html)
             
     
+    @staticmethod
+    def get_traslation(translate_querry:str)->str:
+        translate_url = "http://api.fanyi.baidu.com/api/trans/vip/translate?"
+        appid = '20191107000354007'
+        salt='1435660288'
+        appkey = 'uCqsidm6I7Ssa8aU1pgZ'
+        sign = hashlib.md5((appid+translate_querry+salt+appkey).encode('utf-8')).hexdigest()
+        translate_url+='q={querry}&from=jp&to=zh&appid={appid}&salt={salt}&sign={sign}'.format(querry=translate_querry,appid=appid,salt=salt,sign=sign)
+        response = requests.get(translate_url)
+        translation_result = response.json()['trans_result'][0]['dst']
+        print(f'翻译结果是={translation_result}')
+        return translation_result
+    
+    
+    def generate_sound(self):
+        speech_config = speechsdk.SpeechConfig(subscription='576c74fce86a41bdae3473085ce32be7', region='japaneast')
+        audio_config = speechsdk.audio.AudioOutputConfig(filename='./src/sound/'+self.article_date+'_'+self.news.author+self.news_title[:10]+'.mp3')
+        speech_config.speech_synthesis_voice_name='ja-JP-KeitaNeural'
+        speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)   
+        content = ';'.join(self.article_content)
+        text = self.news_title+'.' + content
+        speech_synthesis_result = speech_synthesizer.speak_text_async(text).get()
         
             
     def printPDF(self):
@@ -151,9 +184,13 @@ class News_article():
                  author:str,
                  content:list,
                  date:str,
-                 cover:str) -> None:
+                 cover:str,
+                 title_translate:str,
+                 content_translate:list) -> None:
         self.title = title
         self.content = content
         self.author = author
         self.date = date
         self.cover = cover
+        self.title_translate = title_translate
+        self.content_translate = content_translate

@@ -7,9 +7,10 @@
 <body>
     <section>
     <div class="container">
-        <div class="header"> <p>日期:{{data.date}}    来源:{{data.author}}</p></div>
+        
         <div class="news">
             <h3 class="title">{{ data.title }}</h3>
+            <div class="header"> <p>日期:{{data.date}}    来源:{{data.author}}</p></div>
             <div class='article_cover'>
                 <img src='{{data.cover}}' alt="">
             </div>
@@ -28,7 +29,19 @@
         </div>
     </section>
     <Section>
-        <div class="container"></div>
+        <div class="container">
+            <div class="header"> <p>日期:{{data.date}}  来源:{{data.author}}  参考译文</p></div>
+            <h3 class="title">{{ data.title_translate }}</h3>
+            <div class="content">
+                {% for value in data.content_translate %}
+                    <p> &nbsp;{{ value }}</p>
+                {% endfor %}
+            </div>
+
+
+
+
+        </div>
 
 
     </Section>
@@ -51,8 +64,8 @@
       }
     body {
         display: flex;
-        flex-direction: column;
         justify-content: center;
+        flex-direction: column;
         height: 100%;
         background-color: aqua;
         size: A4;
@@ -67,7 +80,6 @@
     }
     .header{
         display: block;
-        border-bottom: 2px solid rgb(0, 0, 0); /* 描边效果 */
     }
     .header p{
         margin-left: 3%;
@@ -94,8 +106,8 @@
         justify-content: center;
         align-items: flex-end;
         font-size: 32px;
-        margin-top: 14mm;
-        margin-bottom: 14mm;
+        margin-top: 10mm;
+        margin-bottom: 10mm;
         margin-left: 10mm;
         margin-right: 10mm;
     }
@@ -124,7 +136,7 @@
     }
     .content p{
         letter-spacing: 3px; /* 调整为适当的值 */
-        line-height: 1.2;
+        line-height: 1.5;
         display: flex;
         flex-wrap: wrap;
         text-align: left;

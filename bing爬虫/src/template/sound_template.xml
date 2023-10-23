@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<speak version="1.1" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <!-- 标题 -->
+    <s>
+        <p>
+            <s>{{ data.article_title }}。<!-- 标题文本 --></s>
+        </p>
+        <break time="300ms"/> <!-- 标题后的停顿，时间可以根据需要调整 -->
+    </s>
+
+    <!-- 正文 -->
+    <s>
+        <p>
+            <s>{{ data.article_content }}。<!-- 正文文本 --></s>
+        </p>
+        <break time="300ms"/> <!-- 正文后的停顿，时间可以根据需要调整 -->
+    </s>
+</speak>
